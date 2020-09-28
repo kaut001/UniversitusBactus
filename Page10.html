@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Universitet</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/Page10.css">
+</head>
+
+<body>
+  <div class="mainContainer">
+        
+    <img src="images/inside_heart-1280x720.png">
+    
+    <div id="poly1" class="cover hittable"></div>
+    <div id="poly2" class="cover hittable"></div>
+    
+    <!-- Trigger divs for state change -->
+    <div class="pickupZone trigger"></div>
+    <div class="opt1 pillShape trigger"></div>
+    <div class="opt2 pillShape trigger hittable"></div>
+    <div class="opt3 pillShape trigger hittable"></div>
+    <!-- Trigger divs -->
+    
+    <div id="ball1" class="circle small hittable outer">
+      <div class="circle small inner">pessure</div></div>
+    <div id="ball2" class="circle medium hittable outer">
+      <div class="circle medium inner">paranoia</div></div>
+    <div id="ball3" class="circle medium hittable outer">
+      <div class="circle medium inner">anxiety</div></div>
+
+    
+    <div class="opt1 pillShape triggerMask"></div>
+    <div class="opt2 pillShape triggerMask"></div>
+    <div class="opt2 pillShape triggerMask alive"></div>
+    <div class="opt3 pillShape triggerMask"></div>
+    <div class="opt3 pillShape triggerMask alive"></div>
+
+    <div class="pickupZone triggerMask alive"></div>
+
+    <!-- Math -->
+    <div id="mathTask">What is 93 * 9</div>
+    <div class="opt1 pillShape white">837</div>
+    <div class="opt1 pillShape overlay green">837</div>
+    <div class="opt2 pillShape white">864</div>
+    <div class="opt2 pillShape overlay red">864</div>
+    <div class="opt3 pillShape white">942</div>
+    <div class="opt3 pillShape overlay red">942</div>
+    <!-- Math -->
+    
+    <img class="pickupZone" src="images/cursor1_48px.png">
+    
+    <div class="cursorZone cover"></div>
+
+    <div id="riftLoc" class="riftWrapper trigger">
+      <img src="images/rift.png">
+    </div>
+    
+    <a id="goalLoc" class="goalWrapper trigger" href="Page11.html">
+      <img class="glow" src="images/pipe-67x49-mirrored.png">
+      <img src="images/pipe-67x49-mirrored.png">
+    </a>
+
+    <img id="teacher" src="images/teacher.png">
+      
+    <!-- Speachbubbles -->
+    <div class="speachbubbles">
+      <div id="speachbubble1">
+        <p id="bubble1">Exam time!!</p>
+      </div>
+      <p id="bubble2">Lead Bactus through the heart, solve every task and avoid the white blood cells.</p>
+    </div>
+    <!-- Speachbubbles-->
+
+  </div>
+
+</body>
+
+</html>

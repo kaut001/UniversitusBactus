@@ -1,0 +1,99 @@
+body{
+    background-color: black;
+    background-size: cover;
+    
+}
+/*Main Container*/
+.MainContainer{
+    height: 720px;
+    width: 1280px;
+    background-color: dimgrey;
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    border: 5px solid black;
+    margin: 0 auto;
+    box-shadow: 1px 1px 100px 1px grey;
+}
+
+
+/*Individual HTML elements*/
+
+
+/*Button*/
+#nextButton{
+background-color: darkred;
+color:rosybrown;
+z-index: 5;
+cursor:pointer;
+height: 125px;
+width: 250px;
+font-size: 35px;
+border-radius: 18px;
+position: absolute;
+border-color: black;
+left: 950px;
+top: 530px;
+transition: 0.5s;
+animation: showbuttonlater 7s linear;
+
+}
+
+/*This brown box indicates a table*/
+#box{
+background-color: #5C3414;
+color: white;
+width: 1280px;
+height: 100px;
+top: 622px;
+position:relative;
+z-index: 2;
+overflow:hidden;
+
+}
+/*Arm Image*/
+#arm{
+    height: 900px;
+    width: auto;
+    position: absolute;
+    left: 80px;
+    top: -125px;
+    z-index: 3;
+}
+/*Bacteria Image */
+#bacteria{
+    position: absolute;
+    top: -270px;
+    left: 660px;
+    height: 200px;
+    width: auto;
+    transition: 3s;
+    animation: bacteriafall 5s linear;
+    overflow:auto;
+    z-index: 4;
+    
+}
+
+/*Keyframes*/
+
+/*The bacteria falling down*/
+@keyframes bacteriafall{
+    0% {transform: rotate(30deg) translateX(0px) rotate(-20deg);height: 200px;}
+    100% {transform: rotate(0deg) translateX(100px) translateY(750px) rotate(-50deg); height: 20px;}
+}
+
+/*Made a animation for the button to make it appear later*/
+@keyframes showbuttonlater{
+    0% {opacity: 0%;}
+    20% {opacity: 0%}
+    40% {opacity: 0%}
+    60% {opacity: 0%}
+    80% {opacity: 20%}
+    100% {opacity:100%}
+}
+
+/*Active,Hover,After, etc.*/
+#nextButton:hover{
+    font-size: 45px;
+    box-shadow: 1px 1px 40px 1px darkred;
+}

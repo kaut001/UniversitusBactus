@@ -1,0 +1,50 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*Classes*/
+.map3 {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+/*Main Container*/
+.mainContainerMap3 {
+    height: 720px;
+    width: 1280px;
+    background-image: url(../images/heart_map.png);
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    border: 5px solid black;
+    margin: 0 auto;
+    box-shadow: 1px 1px 100px 1px red;
+    animation: pulse 0.8s infinite alternate;
+}
+
+/*Individual HTML elements*/
+#heart {
+    top: 5px;
+    left: 45px;
+    width: 250px;
+    position: absolute;
+    filter: drop-shadow(10px 15px 30px white);
+    animation: heartbeat 0.40s infinite alternate;
+}
+
+
+/*Keyframes*/
+
+/*Making Main Container Pulse*/
+@keyframes pulse {
+    0%{ box-shadow: 1px 1px 100px 1px red;}
+    100% { box-shadow: 1px 1px 200px 1px red;}
+}
+
+/*Making Heart Beat*/
+@keyframes heartbeat {
+    to { transform: scale(1.1); }
+}

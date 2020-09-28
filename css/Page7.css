@@ -1,0 +1,62 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/*Classes*/
+
+/*Map 2*/
+.map2 {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+/*Main Container*/
+.mainContainerMap2 {
+    height: 720px;
+    width: 1280px;
+    background-image: url(../images/guts_map.png);
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    border: 5px solid black;
+    margin: 0 auto;
+    box-shadow: 1px 1px 100px 1px red;
+    animation: pulse 0.8s infinite alternate;
+}
+
+/*Individual HTML elements*/
+
+/*Organs Image*/
+#organs {
+    top: 280px;
+    left: 70px;
+    width: 450px;
+    position: absolute;
+    filter: drop-shadow(-20px 5px 50px white);
+}
+/*Lungs Image*/
+#lungs {
+    top: 170px;
+    left: 820px;
+    width: 350px;
+    position: absolute;
+    transform: rotate(-10deg);
+}
+
+/*Keyframes*/
+
+/*Making Main Container Pulse*/
+@keyframes pulse{
+    0%{ box-shadow: 1px 1px 100px 1px red;}
+    100% { box-shadow: 1px 1px 200px 1px red;}
+}
+
+
+/*Active,Hover,After, etc.*/
+#organs:hover {
+    transform: scale(1.1,1.1);
+    left: 80px;
+}

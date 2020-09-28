@@ -1,0 +1,256 @@
+/* ----------- General ------------- */
+
+body{
+    margin: 0px;
+    background-color: black;
+}
+img{
+    position: absolute;
+    z-index: 0;
+}
+
+/* ------------ Classes ------------- */
+
+.main{
+    height: 720px;
+    width: 1280px;
+    background-color: rgb(152,22,29);
+    position: relative;
+    top: 50px;
+    overflow: hidden;
+    z-index: 1;
+    border: 5px solid black;
+    margin: 0 auto;
+    box-shadow: 1px 1px 100px 1px red;
+    animation: pulse 0.8s infinite alternate;
+}
+ /* Organ related classes */
+.organs{
+    margin: 10px;
+    font-size: 30px;
+    opacity: 0;
+    animation: startFadeIn 2s forwards 11s;
+}
+
+.organDiv{
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    background-repeat: no-repeat;
+}
+ /* Input classes */
+.check{
+    position: absolute;
+    transform: scale(0.6);
+    z-index: 10;
+    animation: wound 4s infinite alternate;
+}
+
+.check:hover{
+    cursor: url(.../images/cursor1_48px.png), auto;
+}
+    /* Speech bubbles classes */
+.speechBubbles{
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    background-color: azure;
+    border: 1px black solid;
+    border-radius: 50px;
+    position: absolute;
+    right: 260px;
+    top: 130px;
+    opacity: 0;
+    z-index: 2;
+}
+
+.speechBubbles p{
+    margin: 20px;
+    font-family: sans-serif;
+}
+    /* Desk image classes */
+.desks{
+    width: 200px;
+    top: 500px;
+    z-index: 5;
+}
+
+/* -------------- ID'S -------------*/
+
+    /* Organ related ID'S */
+#showOrgansDiv{
+    opacity: 0;
+    z-index: 100;
+}
+#kidneyDiv{
+    background-image: url(.../images/nyreFrisk.png);
+    top: 370px;
+    left: 45px;
+}
+#liverDiv{
+    background-image: url(.../images/leverFrisk.png);
+    top: 290px;
+    left: 90px;
+    transform: rotate(25deg);
+}
+#bowelDiv{
+    background-image: url(.../images/tarmFrisk.png);
+    top: 370px;
+    left: 100px;
+}
+    /* Speech bubble ID'S */
+
+#speechBubble1{
+    animation: speechBubble1 7s 1s;
+}
+#speechBubble2{
+    animation: speechBubble2 2s forwards 7s;
+}
+
+    /* Button & checkbox related ID'S */
+
+    /*Button*/
+#nextButton{
+    background-color: darkred;
+    color:rosybrown;
+    z-index: 10;
+    cursor:pointer;
+    height: 125px;
+    width: 250px;
+    font-size: 35px;
+    border-radius: 18px;
+    position: absolute;
+    border-color: black;
+    left: 1000px;
+    top: 530px;
+    opacity: 0;
+    animation: showbuttonlater 1s forwards 25s;
+}
+   /* Checkboxes */
+#infestKidneys{
+    top: 480px;
+    left: 330px;
+}
+#infestLiver{
+    top: 315px;
+    left: 250px;
+}
+#infestBowels{
+    top: 440px;
+    left: 160px;
+}
+#showOrgansBtn{
+    transform: scale(3);
+}
+    /* Image related ID'S */
+
+#blackBoard{
+    width: 500px;
+    right: 150px;
+    top: 50px;
+}
+#teacher{
+    width: 200px;
+    right: 120px;
+    top: 200px;
+    z-index: 5;
+}
+#teacherHand{
+    width: 150px;
+    right: 150px;
+    top: 200px;
+    z-index: 2;
+    animation: teacherHand 3s infinite alternate;
+}
+#bodyImg{
+    width: 300px;
+    top: 50px;
+    left: 100px;
+    z-index: -1;
+    animation: zoomIn 5s linear forwards 6s; 
+}
+#desk1{
+    right: 50px;
+}
+#desk2{
+    right: 260px;
+}
+#desk3{
+    right: 470px;
+}
+
+/* ------------- KEYFRAMES ---------- */
+/* Animation to make bodyImg zoom in after a set time */
+@keyframes zoomIn{
+    100%{
+        top: -400px;
+        left: -280px;
+        width: 900px;
+    }
+}
+
+/* Animation to make checkboxes inside wounds fade in and out */
+@keyframes wound{
+    50%{opacity: 0.1;}
+    100%{opacity: 0.5;}
+}
+
+/* Animation to make speechBubble1 fade in and out once */
+@keyframes speechBubble1{
+    50%{ opacity: 1;}
+    100%{ opacity: 0;}
+}
+
+/* Animation to make speechBubble2 fade in and stay */
+@keyframes speechBubble2{
+    100%{ opacity: 1;}
+}
+
+/* Animation to make .organs fade in after a set time */
+@keyframes startFadeIn{
+    100%{ opacity: 1;}
+}
+
+/* Animation to make background pulse */
+@keyframes pulse{
+    0%{ box-shadow: 1px 1px 100px 1px red;}
+    100% { box-shadow: 1px 1px 200px 1px red;}
+}
+
+/* Animation to make teacherHand move */
+@keyframes teacherHand{
+    100%{transform: rotateY(50deg);}
+}
+
+/* Animation to make button visible later*/
+@keyframes showbuttonlater{
+    100%{opacity: 1;}
+}
+
+/* --------- PSEUDO CLASSES -------- */
+
+#nextButton:hover{
+    transition: 0.5s;
+    font-size: 45px;
+    box-shadow: 1px 1px 40px 1px darkred;
+}
+
+    /* Changes background image to infested when checked */
+#infestKidneys:checked ~ #kidneyDiv{
+    background-image: url(.../images/nyrerInfisert.png);
+    transition: 2s;
+}
+
+#infestLiver:checked ~ #liverDiv{
+    background-image: url(.../images/leverInfisert.png);
+    transition: 2s;
+}
+#infestBowels:checked ~ #bowelDiv{
+    background-image: url(.../images/tarmInfisert.png);
+    transition: 2s;
+}
+ /* Makes the organs visible when checked */
+#showOrgansBtn:checked ~ #showOrgansDiv{
+    opacity: 1;
+    transition: 2s;
+}

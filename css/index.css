@@ -1,0 +1,78 @@
+body{
+    background-color: black;
+    background-size: cover;
+}
+/*Main Container*/
+.mainContainer{
+    height: 720px;
+    width: 1280px;
+    background-color: dimgrey;
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    border: 5px solid black;
+    margin: 0 auto;
+    box-shadow: 1px 1px 100px 1px grey;
+    
+}
+
+/*Individual HTML elements*/
+
+/*School Image*/
+#school{
+    height: 720px;
+    width: 1280px;
+    z-index: 1;
+    position: absolute;
+    animation: fadepicture 0.5s linear forwards 5s;
+    animation-iteration-count: 1;
+}
+
+/*Button*/
+#startButton{
+background-color: darkred;
+color: rosybrown;
+z-index: 2;
+cursor: pointer;
+height: 150px;
+width: 250px;
+font-size: 35px;
+border-color: black;
+border-radius: 20px;
+position: absolute;
+left: 450px;
+top: 530px;
+transition: 0.5s;
+animation:showbuttonlater 8s linear;
+
+}
+
+/*Student Image*/
+#student{
+    position: absolute;
+    left:00px;
+    top: 0px;
+    height: 720px;
+    width: 1280px;
+}
+
+/*Keyframes*/
+@keyframes fadepicture{
+    0% {opacity: 100%}
+    100%{opacity: 0%}
+}
+@keyframes showbuttonlater{
+    0% {opacity: 0%;}
+    20% {opacity: 0%}
+    40% {opacity: 0%}
+    60% {opacity: 0%}
+    80% {opacity: 20%}
+    100% {opacity:100%}
+}
+
+/*Active,Hover,After, etc.*/
+
+#startButton:hover{
+    font-size: 45px;
+    box-shadow: 1px 1px 40px 1px darkred;
+}

@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  background-color: black;
+
+}
+
+.center {
+  margin: 0 auto;
+}
+
+/* Main container */
+#mainContainer{
+    width: 1280px; 
+    height: 720px;
+    position: relative;
+    display: flex;
+    border: 5px solid black;
+    background-color: rgb(152,22,29);
+    margin: 0 auto;
+    top: 50px;
+    animation: pulse 0.8s infinite alternate;
+    overflow: hidden;
+    
+}
+
+
+/*Picture behind the door*/
+#insideStomach{
+    display: block;
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    top:  0px;
+    left: 0px;
+}
+
+#stomachPic{
+    height:400px;
+    width:400px;
+    border-radius: 200px;
+    position: relative;
+    top: 200px;
+    left: 200px;
+}
+
+/*The door that opens up to the stomach*/
+#door{
+    display:flex;
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    background-color: darksalmon;
+    top: 198px;
+    left: 200px;
+    border-radius: 200px;
+    border: 2px solid black;
+    
+}
+
+/*press to enter*/
+#enter{
+    margin-top: 160px;
+    margin-left: 80px;
+    font-size: 40px;
+    color: white;
+    text-shadow: -2px 0 brown, 0 2px brown, 2px 0 brown, 0 -2px brown;
+    font-variant: small-caps;
+}
+
+
+
+#ground{
+    position: absolute;
+    display: block;
+    background-color: crimson;
+    height: 120px;
+    width: 1280px;
+    margin-top: 600px;
+    border: 1px solid red;
+    margin-left: 1px;
+    
+}
+
+
+
+
+
+/*The student*/
+#picture1{
+    display: flex;
+    position: absolute;
+    margin-top: 420px;
+    margin-left: 900px;
+    animation: slideIn 3s linear;
+}
+
+
+/*The teacher*/
+#picture2{
+    display: flex;
+    position:absolute;
+    margin-top: 310px;
+    margin-left: 550px;
+    width: 300px;
+    height:300px;
+    
+}
+
+#bacteria1{
+    height:300px;
+    width:300px;
+}
+
+#speechBubbleSquare{
+    position: relative;
+    width: 300px;
+    height: 120px;
+    background-color: #00aabb;
+    left: 740px;
+    top: 190px;
+    animation: squareFade 3s linear;
+}
+
+
+
+#speechBubble{
+    position: relative;
+	background: #00aabb;
+	border-radius: 30px;
+    background-color: black;
+    display: block;
+    animation: triangleFade 3s linear;
+}
+
+
+
+
+
+/*Welcome to your first lession!*/
+#bubbleTxt{
+    font-size: 20px;
+    font-style:oblique;
+    margin-left: 5px;
+    animation: fadeIn 3s;
+}
+
+#classroom{
+    position:absolute;
+    display:flex;
+    height:100px;
+    width:200px;
+    margin-top: 60px;
+    margin-left: 270px;
+}
+
+/*Classroom*/
+#classroomTxt{
+    font-size: 60px;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+/*Active, hover, after, etc.*/
+
+#enter:hover{
+    color: red;
+    transform:scale(1.05);
+    text-shadow: 1px 0px black;
+}
+
+#door:hover{
+     transform:perspective(300px) rotate(0deg);
+    transform-origin: 0% 50%;
+    animation: open 3s linear;
+}
+
+#speechBubble:after{
+    content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-top-color: #00aabb;
+	border-bottom: 0;
+	border-left: 0;
+	left: 500px;
+	margin-bottom: 360px;
+}
+
+
+/*Keyframes*/
+
+
+/*Makes the triangle under the speechbubble fade in the same time as the "squareFade" which makes the square fade in*/
+@keyframes triangleFade{
+    0%{opacity: 0%;}
+    25%{opacity: 0%;}
+    50%{opacity: 0%;}
+    75%{opacity: 50%;}
+    100%{opacity: 100%;}
+}
+
+@keyframes squareFade{
+    0%{opacity: 0%;}
+    25%{opacity: 0%;}
+    50%{opacity: 0%;}
+    75%{opacity: 50%;}
+    100%{opacity: 100%;}
+}
+
+/*Makes the text inside the speechbubble fade in with the bubble*/
+@keyframes fadeIn{
+    0%{opacity: 0%;}
+    25%{opacity: 0%;}
+    50%{opacity: 0%;}
+    75%{opacity: 0%;}
+    100%{opacity: 100%;}
+}
+
+/*Bacteria slides in at the start*/
+@keyframes slideIn{
+    0%{right: -50px; opacity: 0%;}
+    10%{right: 0px; opacity: 0%;}
+    25%{right: 50px; opacity: 100%;}
+    50%{right: 150px; opacity: 100%;}
+    75%{right: 160px; opacity: 100%;}
+    100%{right:170px; opacity: 100%;}
+    
+}
+
+/*Door opening and closing when hovered*/
+@keyframes open{
+     0%{
+        transform: perspective(300px) rotateY(10deg);
+    }
+    25%{
+        transform: perspective(300px) rotateY(20deg);
+    }
+    50%{
+        transform: perspective(300px) rotateY(40deg);
+    }
+    75%{
+        transform: perspective(300px) rotateY(50deg);
+    }
+    85%{
+        transform: perspective(300px) rotateY(20deg);
+    }
+    100%{
+        transform: perspective(300px) rotateY(0deg);
+    }
+}
+
+/*Background effects*/
+@keyframes pulse{
+    0%{ box-shadow: 1px 1px 100px 1px red;}
+    100% { box-shadow: 1px 1px 200px 1px red;}
+}
+
+
+
+

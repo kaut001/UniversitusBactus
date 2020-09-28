@@ -1,0 +1,362 @@
+body {
+  margin: 0;
+  background-color: black;
+}
+
+/*
+
+Original ide: Magnus
+
+*/
+
+/* 
+ TODO:
+
+ Endre pipe til neste side link
+ Fjern knapp.
+
+*/
+
+/* Main container */
+#mainContainer {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  margin: 0 auto; /* center horizontally */
+  border: 3px solid orange;
+  background-image: url(../images/lungs-type2-1280x720.png);
+  
+  animation-name: pulsating;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+#mainContainer * { /* apply to all child elements */
+  position: absolute;
+}
+
+@keyframes pulsating {
+  0% {
+    background-color: rgb(35, 8, 11);
+  }
+  50% {
+    background-color: rgb(152,22,29);
+  }
+  100% {
+    background-color: rgb(35, 8, 11);
+  }
+}
+
+#pickupWrapper {
+  left: 21px;
+  top: 592px;
+  width: 39px;
+  height: 48px;
+  z-index: 1;
+}
+#pickupZone {
+  left: 21px;
+  top: 592px;
+  width: 39px;
+  height: 48px;
+  content: url("../images/cursor1_48px.png");
+}
+#pickupWrapper:hover ~ #cursorZone {
+  animation-play-state: running;
+}
+#cursorZone {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+@keyframes toggleview {
+  from { visibility: hidden;  }
+  to   { visibility: visible; }
+}
+
+/* Hide static bacteria om hover */
+#pickupWrapper:hover ~ #pickupZone {
+  animation-play-state: running;
+}
+#pickupZone {
+  animation: toggleview 1ms reverse forwards paused;
+}
+
+.hittable {
+  z-index: 1; /* needed to register hover events */
+}
+.hittable:hover ~ #cursorZone,
+.hittable:hover ~ #goalLink,
+.hittable:hover ~ #pickupZone {
+  display: none; /* hide cursor and reset animation */
+  visibility: visible;
+}
+.hittable:hover {
+  cursor: url(../images/cursor1-forbidden_48px.png) 13 26, default;
+}
+
+#cursorZone {
+  width: 100%;
+  height: 100%;
+  cursor: url(../images/cursor1_48px.png) 13 26, default;
+}
+
+#pickupWrapper {
+  cursor: url(../images/cursor1_48px.png) 13 26, default;
+}
+
+/* Display goal link */
+#pickupWrapper:hover ~ #goalLink {
+  animation-play-state: running;
+}
+#goalLink {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+#goalLink:hover ~ #cursorZone {
+  display: none;
+}
+
+/* Grow goal link on hover */
+#goalLink {
+  transition: transform .5s;
+}
+#goalLink:hover {
+  transform: scale(2);
+}
+
+.circle {
+  border-radius: 50%;
+  text-align: center; /* for debug values */
+}
+
+.outer {
+  position: relative;
+}
+
+.inner {
+  position: absolute;
+  margin-left: 11px;
+  margin-top: 18px;
+  background: white;
+  
+  border: 3px dotted black;
+  /*animation: spin 5s infinite ease-in-out;*/
+  
+  /* text formatting */
+  text-align: center;
+  color: darkslategray;
+}
+.small {
+  line-height: 65px;
+}
+.medium {
+  line-height: 90px;
+}
+.large {
+  line-height: 120px;
+}
+@keyframes spin {
+  0% {
+    transform:rotate(160deg); opacity:0; box-shadow:0 0 1px #bdd73c;
+  }
+  50% {
+    transform:rotate(145deg); opacity:1;
+  }
+  100% {
+    transform:rotate(-320deg); opacity:0;
+  }
+}
+#circle_1.inner {
+  animation-delay: 1s;
+}
+
+/* Circle sizes, small, medium and large */
+.small.inner { width: 75px;  height: 75px;  }
+.small.outer { width: 97px;  height: 114px;  }
+.medium.inner { width: 105px; height: 105px; }
+.medium.outer { width: 123px; height: 134px; }
+.large.inner { width: 141px; height: 145px; }
+.large.outer { width: 163px; height: 175px; }
+
+#feedback {
+  left: 2px;
+  bottom: -32px;
+  font-size: 2em;
+  color: beige;
+}
+
+#goalLink {
+  display: block;
+  left: 1210px;
+  top: 575px;
+  width: 67px;
+  height: 49px;
+}
+.goal {
+  transform: rotate(-15deg);
+  transform: translate(-50%, -50%);
+  transform-origin: 0, 0;
+  z-index: 2;
+}
+.glow {
+  z-index: 1;
+  transform: scale(1.5) translate(-30%, -30%);
+  filter: brightness(0) invert(1) blur(5px);
+}
+
+#teacher {
+  left: 470px;
+  top: 560px;
+  width: 80px;
+  height: auto;
+}
+
+#textbox{
+    display: block;
+    width: 300px;  
+    font-size: 20px;
+    background-color: aliceblue;
+    left: 150px;
+    top: 530px;
+    position: absolute;
+    z-index: 10;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.fadein5s {
+  animation: fadein 1ms 5s backwards;
+}
+
+/*.next-button {
+  background-color: darkred;
+  color: rosybrown;
+  z-index: 2;
+  cursor: pointer;
+  height: 100px;
+  width: 200px;
+  font-size: 35px;
+  border-color: black;
+  border-radius: 20px;
+  position: absolute;
+  left: 1050px;
+  top: 600px;
+  transition: 0.5s;
+  margin: 0 auto;
+}
+.next-button:hover{
+  font-size: 45px;
+  box-shadow: 1px 1px 40px 1px darkred;
+}*/
+
+.cover {
+  width: 100%;
+  height: 100%;
+}
+
+#poly1 {
+  clip-path: polygon(0 0, 1px 550px, 35px 375px, 135px 170px, 220px 70px, 390px 5px, 475px 2px, 530px 40px, 565px 170px, 555px 265px, 570px 222px,
+  570px 0);
+}
+#poly2 {
+  clip-path: polygon(1280px 0, 675px 0,
+  710px 222px, 725px 265px, 715px 170px, 750px 40px, 805px 2px, 890px 5px, 1060px 70px, 1145px 170px, 1245px 375px, 1279px 550px, 1273px 630px);
+}
+#poly3 {
+  clip-path: polygon(1270px 720px, 1273px 630px, 1235px 650px, 1070px 640px, 1005px 615px, 910px 610px, 810px 585px, 750px 555px, 715px 520px, 705px 495px, 700px 435px, 720px 350px, 660px 285px, 620px 285px, 560px 350px, 580px 435px, 575px 495px, 565px 520px, 530px 555px, 470px 585px, 370px 610px, 275px 615px, 210px 640px, 45px 650px, 7px 630px, 0 720px);
+}
+
+.circle {
+  animation: fadein 2s 2s backwards;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.circle.hittable {
+  animation-name: floating;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+#circle_1 {
+  animation-duration: 2s;
+  animation-delay: 2s;
+}
+#circle_2 {
+  animation-duration: 4s;
+  animation-delay: 2s;
+}
+#circle_3 { 
+  animation-duration: 4s;
+}
+#circle_4,
+#circle_5,
+#circle_6 {
+  animation-delay: 3s;
+}
+#circle_3,
+#circle_8,
+#circle_9,
+#circle_10 {
+  animation-delay: 5s;
+}
+#circle_4 { 
+  animation-duration: 5s;
+}
+#circle_5 {
+  animation-duration: 3s;
+}
+#circle_6 { 
+  animation-duration: 2s;
+}
+#circle_7 { 
+  animation-duration: 6s;
+  animation-delay: 1s;
+}
+#circle_8 { 
+  animation-duration: 6s;
+}
+#circle_9 { 
+  animation-duration: 6s;
+}
+#circle_10 { 
+  animation-duration: 5s;
+}
+#circle_11 { 
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0%, 0%);	
+  }
+  25% {
+    transform: translate(20%, 50%);	
+  }	
+  50% {
+    transform: translate(30%, 30%);	
+  }	
+  75% {
+    transform: translate(0%, 50%);	
+  }	
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+#circle_1 { left: 200px; top: 100px; animation-delay: .4; }
+#circle_2 { left: 250px; top: 150px; animation-delay: 1.4; }
+#circle_3 { left: 1050px; top: 300px; animation-delay: 0; }
+#circle_4 { left: 550px; top: 330px; animation-delay: 0.2; }
+#circle_5 { left: 550px; top: 235px; animation-delay: 1.6; }
+#circle_6 { left: 600px; top: 45px; animation-delay: 0.8; }
+#circle_7 { left: 230px; top: 390px; animation-delay: 1.8; }
+#circle_8 { left: 900px; top: 410px; animation-delay: 0.6; }
+#circle_9 { left: 705px; top: 110px; animation-delay: 1.2; }
+#circle_10 { left: 870px; top: 90px; animation-delay: 0.4; }
+#circle_11 { left: 20px; top: 165px; animation-delay: 1; }

@@ -1,0 +1,385 @@
+/* CLASSES AND BODY ELEMENTS*/
+
+body{
+    background-color: black;
+}
+
+
+/*Main container for both frames*/
+.mainContainer{
+    height: 720px;
+    width: 1280px;
+    top: 50px;
+    border: 10px groove grey;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px 10px yellow;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/*Keyframe is added to hide the first container*/
+.container1{
+    position: absolute;
+    animation: disapear 9s forwards;
+}
+
+/*Keyframe is added to show the second frame*/
+.container2{
+    position: absolute;
+    animation: appear 9s forwards;
+}
+
+/*Class for css houses*/
+.house{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 10px solid black;
+    z-index: 0;
+}
+
+/*Class for the forest and town image*/
+.misc{
+    z-index: 1;
+}
+
+/*Ending text*/
+.textBox{
+    position: absolute;
+    width: 800px;
+    margin-left: 270px;
+    margin-top: 450px;
+    text-align: center;
+    font-family: "Impact", fantasy;
+    font-size: 50px;
+    text-rendering: geometricPrecision;
+    z-index: -5;
+    animation: textRoll 40s forwards linear;
+    animation-delay: 13s;
+}
+
+
+
+
+
+/* FRAME 1 */
+
+#sky1{
+    position: absolute;
+    height: 720px;
+    width: 1280px;
+    background-image: linear-gradient(blue, lightblue, lightblue, lightblue, lightblue, lightblue);
+    z-index: -5;
+}
+
+#grass1{
+    position: absolute;
+    width: 1280px;
+    height: 200px;
+    margin-top: 520px;
+    background-image: linear-gradient(green, lawngreen);
+    z-index: -2;
+    animation: disapear 0.1s; 
+}
+
+#road1{
+    position: absolute;
+    width: 100px;
+    height: 0px;
+    margin-left: 600px;
+    margin-top: 520px;
+    border-bottom: 200px solid orange;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    z-index: -2;
+}
+
+#sun1{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    border-bottom-right-radius: 200px;
+    box-shadow: 0px 0px 100px 50px yellow;
+}
+
+#tree1{
+    position: absolute;
+    background-color: forestgreen;
+    width: 100px;
+    height: 200px; 
+    border-radius: 50%;
+    margin-top: 300px;
+    margin-left: 100px;
+}
+
+#school{
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 435px;
+    z-index: -2;
+}
+
+#leftDoor{
+    position: absolute;
+    width: 30px;
+    height: 48px;
+    background-color: saddlebrown;
+    margin-top: 460px;
+    margin-left: 645px;
+    animation: openLeftDoor 4s forwards;
+}
+
+#rightDoor{
+    position: absolute;
+    width: 30px;
+    height: 48px;
+    background-color: saddlebrown;
+    margin-top: 460px;
+    margin-left: 675px;
+    animation: openRightDoor 4s forwards;
+}
+
+#bacteria{
+    position: absolute;
+    width: 40px;
+    margin-top: 460px;
+    margin-left: 660px;
+    z-index: -1;
+    animation: bacteriaExit 4s forwards;
+    animation-delay: 1.5s;
+}
+
+#examinationBox {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    margin-left: 950px;
+    margin-top: 270px;
+    background: white;
+    border-radius: 50% / 10%;
+}
+
+#examinationText{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    margin-left: 950px;
+    margin-top: 290px;
+    font-size: 29px;
+    text-align: center;
+}
+
+
+
+
+/* FRAME 2 */
+
+#sky2{
+    position: absolute;
+    width: 1280px;
+    height: 800px;
+    background-image: radial-gradient(yellow, red, purple);
+    z-index: -6;
+}
+
+#grass2{
+    position: absolute;
+    width: 1280px;
+    height: 400px;
+    background-image: linear-gradient(rgb(0,10,0),rgb(0,50,0));
+    margin-top: 400px;
+    z-index: -4;
+}
+
+#road2{
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    margin-left: 150px;
+    margin-top: 400px;
+    border-bottom: 400px solid;
+    border-left: 500px solid transparent;
+    border-right: 500px solid transparent;
+    background-image: url(/images/road.png);
+    z-index: -3;
+}
+
+#house1{
+    margin-top: 380px;
+    margin-left: 600px;
+}
+
+#house2{
+    margin-top: 380px;
+    margin-left: 550px;
+}
+
+#house3{
+    margin-top: 380px;
+    margin-left: 500px;
+}
+
+#house4{
+    margin-top: 380px;
+    margin-left: 450px;
+}
+
+#forestLeft{
+    position: absolute;
+    margin-top: 380px;
+    margin-left: 50px;
+}
+
+#townRight{
+    position: absolute;
+    margin-top: 340px;
+    margin-left: 800px;
+}
+
+#bacteria2{
+    position: absolute;
+    width: 1000px;
+    margin-left: 0px;
+    margin-top: 300px;
+    animation: bacteriaWalk 40s forwards ease-out;
+    animation-delay: 9s;
+    z-index: 2;
+}
+
+#bacteria2Black{
+    position: absolute;
+    width: 1000px;
+    margin-left: 0px;
+    margin-top: 300px;
+    animation: bacteriaWalkBlack 40s forwards ease-out;
+    animation-delay: 9s;
+    z-index: 1;
+}
+
+#text{
+    color: black;
+}
+
+/*Decorating the end text to have multiple shadows in different tones of yellow*/
+#theEndText{
+    text-decoration: overline underline;
+    color: yellow;
+    font-size: 200px;
+    text-shadow:    2px 5px 5px rgb(200,200,0), 
+                    -2px 5px 5px rgb(200,200,0),
+                    4px 7px 0px rgb(150,150,0),
+                    -4px 7px 0px rgb(150,150,0),
+                    6px 10px 0px rgb(100,100,0),
+                    -6px 10px 0px rgb(100,100,0);
+}
+
+
+
+/* KEYFRAMES */
+
+
+/* First frame going out of university */
+
+/*For opening doors*/
+@keyframes openRightDoor{
+    0% {left: 0px;}
+    100% {left: 15px; z-index: -2;}
+}
+
+@keyframes openLeftDoor{
+    0% {left: 0px;}
+    100% {left: -15px; z-index: -2;} 
+}
+
+/*Making the bacteria exit the building*/
+@keyframes bacteriaExit{
+    0% {top: 0px; left: 0px;}
+    100% {top: -400px; left: -400px; width: 800px;}
+}
+
+/*To make an object become hidden*/
+@keyframes disapear{
+    0% {visibility: visible;}
+    99% {visibility: visible;}
+    100% {visibility: hidden;}
+}
+
+
+
+/* Second frame zooming into horizon */
+
+/*To make an object visible*/
+@keyframes appear{
+    0% {visibility: hidden;}
+    99% {visibility: hidden;}
+    100% {visibility: visible;}
+}
+
+/*Two identical layers of the animation of the bacteria walking. making him fade/get darker the furhter he walks*/
+@keyframes bacteriaWalk{
+    0% {opacity: 1;}
+    100% {width: 10px; margin-left: 650px; margin-top: 390px; opacity: 0;}
+}
+
+@keyframes bacteriaWalkBlack{
+    0% {}
+    100% {width: 10px; margin-left: 650px; margin-top: 390px;}
+}
+
+/*End text*/
+@keyframes textRoll{
+    0% {}
+    100% {margin-top: -1200px;}
+}
+
+/*Psuedo classes*/
+
+/*For frame 1*/
+
+/*Adding an "before" and "after" psuedo class to a css object makes it possible to add more objects to just one id*/
+#tree1:after{
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 200px;
+    background-color: saddlebrown;
+    margin-top: 80px;
+    margin-left: 35px;
+    z-index: -1;
+}
+
+#examinationBox:before {
+    position: absolute;
+    content: '';
+    top: 20px;
+    bottom: 20px;
+    right: -15px;
+    left: -15px;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+/*For frame 2*/
+.house:after{
+    position: absolute;
+    content: '';
+    width: 25px;
+    height: 10px;
+    left: -13px;
+    top: 10px;
+    background-color: black;
+}
+
+.house:before{
+    position: absolute;
+    content: '';
+    width: 5px;
+    height: 10px;
+    background-color: black;
+    top: -2px;
+    left: 5px;
+}

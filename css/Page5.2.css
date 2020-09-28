@@ -1,0 +1,112 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/*Classes*/
+
+/*Transition*/
+.transitions {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+/*Main Container*/
+.mainContainer {
+    background: transparent;
+    height: 720px;
+    width: 1280px;
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    border: 5px solid black;
+    margin: 0 auto;
+    box-shadow: 1px 1px 100px 1px red;
+    animation: pulse 0.8s infinite alternate;
+    overflow: hidden;
+   
+}
+
+/*Individual HTML Objects*/
+
+/*Veins Background*/
+#SeverallBackground{
+    z-index: 0;
+    height: 720px;
+    width: 1280px;
+    position: absolute;
+    left: 00px;
+    top: 0px;
+    
+}
+
+/*Big Vein Image*/
+#Layer{
+    z-index: 4;
+    position: absolute;
+    left: 00px;
+}
+/*Bacteria Image*/
+#bacteria {
+    top: -130px;
+    margin-left: 0px;
+    left: 600px;
+    width: 100px;
+    border-radius: 100%;
+    position: absolute;
+    display: block;
+    filter: drop-shadow(10px 25px 30px black);
+    animation: bacteriaAnimation 6s linear;
+    z-index: 1;
+}
+
+/*Button*/
+#next-button{
+background-color: darkred;
+color:rosybrown;
+z-index: 5;
+cursor:pointer;
+height: 125px;
+width: 250px;
+font-size: 35px;
+border-radius: 18px;
+position: absolute;
+border-color: black;
+left: 950px;
+top: 530px;
+transition: 0.5s;
+animation: showbuttonlater 7s linear;
+
+}
+
+
+
+/*Keyframes*/
+
+/*Container pulsing*/
+@keyframes pulse{
+    0%{ box-shadow: 1px 1px 100px 1px red;}
+    100% { box-shadow: 1px 1px 200px 1px red;}
+}
+/*Bacteria Animation*/
+@keyframes bacteriaAnimation {
+    0% {transform: rotate(10deg) translateX(0px) rotate(-50deg);}
+    100% {transform: rotate(0deg) translateX(-300px) translateY(850px) rotate(50deg);}
+}
+/*Made a animation for the button to make it appear later*/
+@keyframes showbuttonlater{
+    0% {opacity: 0%;}
+    20% {opacity: 0%}
+    40% {opacity: 0%}
+    60% {opacity: 0%}
+    80% {opacity: 20%}
+    100% {opacity:100%}
+}
+
+/*Active,Hover,After, etc.*/
+#next-button:hover{
+    font-size: 45px;
+    box-shadow: 1px 1px 40px 1px darkred;
+}

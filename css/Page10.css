@@ -1,0 +1,494 @@
+body {
+  background-color: black;
+}
+
+.mainContainer {
+  position: relative;
+  top: 50px;
+  width: 1280px;
+  height: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 5px solid black;
+  animation: pulse 0.8s infinite alternate, pulsating 2s infinite;
+  background-color: rgb(152, 22, 29);
+}
+.mainContainer * {
+  position: absolute;
+}
+
+
+/**
+ * Page specific
+ */
+
+.pickupZone {
+  left: 350px;
+  top: 560px;
+  width: 39px;
+  height: 48px;
+}
+
+#goalLoc {
+  left: 400px;
+  top: 630px;
+}
+
+#riftLoc {
+  left: 956px;
+  top: 620px;
+}
+
+#riftLoc img {
+  width: 57px;
+  height: 42px;
+  transform: rotate(60deg);
+}
+
+#teacher {
+  left: 120px;
+  top: 580px;
+  width: 100px;
+  height: 150px;
+}
+
+#mathTask {
+  left: 407px;
+  top: 80px;
+  font-size: 22px;
+  padding: 3px 6px;;
+  background-color: red;
+}
+
+.opt1 {
+  left: 355px;
+  top: 155px;
+}
+
+.opt2 {
+  left: 445px;
+  top: 155px;
+}
+
+.opt3 {
+  left: 535px;
+  top: 155px;
+}
+
+#ball1 {
+  left: 320px;
+  top: 100px;
+}
+
+#ball2 {
+  left: 600px;
+  top: 440px;
+}
+
+#ball3 {
+  left: 400px;
+  top: 380px;
+}
+
+/**
+ * Wrappers
+ */
+
+.goalWrapper {
+  display: block;
+  width: 67px;
+  height: 49px;
+  transition: transform .5s;
+  z-index: 1;
+}
+.goalWrapper:hover { /* grow on hover */
+  transform: scale(2);
+}
+
+.cursorZone,
+.trigger,
+.triggerMask.alive {
+  cursor: url(../images/cursor1_48px.png) 13 26, default;
+}
+
+.cursorZone,
+.trigger {
+  z-index: 1;
+}
+
+.riftWrapper {
+  z-index: 1;
+}
+
+
+/**
+ * General classes
+ */
+
+.cover {
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.hittable {
+  z-index: 4;
+}
+
+.trigger {
+  z-index: 3;
+  /*background-color: lightseagreen;*/
+}
+
+.triggerMask {
+  z-index: 4;
+  /*background-color: gray;*/
+}
+
+.triggerMask.alive {
+  /*background-color: yellow;*/
+}
+
+.triggerMask.dead {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+/* Use: stack two images and apply to first one */
+.glow {
+  transform: scale(1.5);
+  filter: brightness(0) invert(1) blur(5px);
+}
+
+.pillShape {
+  border-radius: 25px;
+  height: 35px;
+  width: 70px;
+  text-align: center;
+  line-height: 35px;
+}
+
+
+/**
+ * State changes
+ */
+
+/* Display bacteria cursor - hidden by default */
+.pickupZone.trigger:hover ~ .cursorZone {
+  animation-play-state: running;
+}
+.cursorZone {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+/* Hide static bacteria image - visible by default */
+.pickupZone.trigger:hover ~ img.pickupZone {
+  animation-play-state: running;
+}
+img.pickupZone {
+  animation: toggleview 1ms reverse forwards paused;
+}
+
+/* Hide math overlays (from previous interaction) */
+.pickupZone.trigger:hover ~ .opt1.overlay,
+.pickupZone.trigger:hover ~ .opt1.triggerMask,
+.pickupZone.trigger:hover ~ .opt2.overlay,
+.pickupZone.trigger:hover ~ .opt2.triggerMask,
+.pickupZone.trigger:hover ~ .opt3.overlay,
+.pickupZone.trigger:hover ~ .opt3.triggerMask {
+  display: none;
+}
+
+/* Prevent triggering reset when alive */
+.pickupZone.trigger:hover ~ .pickupZone.triggerMask.alive {
+  animation-play-state: running;
+}
+.pickupZone.triggerMask.alive {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+/* Display math elements - hidden by default */
+.pickupZone.trigger:hover ~ #mathTask,
+.pickupZone.trigger:hover ~ .opt1.white,
+.pickupZone.trigger:hover ~ .opt2.white,
+.pickupZone.trigger:hover ~ .opt3.white,
+.pickupZone.trigger:hover ~ .opt1.trigger,
+.pickupZone.trigger:hover ~ .opt2.trigger,
+.pickupZone.trigger:hover ~ .opt3.trigger {
+  animation-play-state: running;
+}
+#mathTask,
+.opt1,
+.opt2,
+.opt3 {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+/* Hide math containers (user selects answer) */
+.opt1.trigger:hover ~ #mathTask,
+.opt1.trigger:hover ~ .opt1.white,
+.opt1.trigger:hover ~ .opt2.white,
+.opt1.trigger:hover ~ .opt3.white,
+.opt2.trigger:hover ~ #mathTask,
+.opt2.trigger:hover ~ .opt1.white,
+.opt2.trigger:hover ~ .opt2.white,
+.opt2.trigger:hover ~ .opt3.white,
+.opt3.trigger:hover ~ #mathTask,
+.opt3.trigger:hover ~ .opt1.white,
+.opt3.trigger:hover ~ .opt2.white,
+.opt3.trigger:hover ~ .opt3.white {
+  display: none;
+}
+
+/* Display colored math option overlay */
+.opt1.trigger:hover ~ .opt1.overlay,
+.opt2.trigger:hover ~ .opt2.overlay,
+.opt3.trigger:hover ~ .opt3.overlay {
+  animation-play-state: running;
+}
+
+/* Display triggerMasks to prevent multiple answers */
+.opt1.trigger:hover ~ .opt2.triggerMask.alive,
+.opt1.trigger:hover ~ .opt3.triggerMask.alive,
+.opt2.trigger:hover ~ .opt1.triggerMask,
+.opt2.trigger:hover ~ .opt3.triggerMask,
+.opt3.trigger:hover ~ .opt1.triggerMask,
+.opt3.trigger:hover ~ .opt2.triggerMask {
+  animation-play-state: running;
+}
+
+/* Reset */
+.hittable:hover ~ .cursorZone,
+.hittable:hover ~ img.pickupZone,
+.hittable:hover ~ .pickupZone.triggerMask,
+.hittable:hover ~ .riftWrapper,
+.hittable:hover ~ #mathTask,
+.hittable:hover ~ .opt1.white,
+.hittable:hover ~ .opt1.overlay,
+.hittable:hover ~ .opt2.white,
+.hittable:hover ~ .opt2.overlay,
+.hittable:hover ~ .opt3.white,
+.hittable:hover ~ .opt3.overlay,
+.hittable:hover ~ .goalWrapper {
+  display: none; /* resets animations */
+  visibility: visible; /* displays pickupZone image */
+}
+
+/* Display "forbidden" cursor */
+.hittable:hover,
+.triggerMask.dead:hover {
+  cursor: url(../images/cursor1-forbidden_48px.png) 13 26, default;
+}
+
+/* Display rift - hidden by default */
+.opt1.trigger:hover ~ .riftWrapper {
+  animation-play-state: running;
+}
+.riftWrapper {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+/* Display goal - hidden by default */
+.riftWrapper:hover ~ .goalWrapper {
+  animation-play-state: running;
+}
+.goalWrapper {
+  animation-name: toggleview;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+
+/**
+ * Balls
+ */
+.outer {
+  display: inline-block;
+  position: relative;
+}
+
+.inner {
+  position: absolute;
+  margin-left: 11px;
+  margin-top: 18px;
+  background: white;
+  
+  border: 3px dotted black;
+  /*animation: spin 5s infinite ease-in-out;*/
+  
+  /* text formatting */
+  text-align: center;
+  color: darkslategray;
+}
+.small {
+  line-height: 65px;
+}
+.medium {
+  line-height: 90px;
+}
+.large {
+  line-height: 120px;
+}
+
+#circle_1.inner {
+  animation-delay: 1s;
+}
+
+/* Circle sizes, small, medium and large */
+.small.inner { width: 75px;  height: 75px;  }
+.small.outer { width: 97px;  height: 114px;  }
+.medium.inner { width: 105px; height: 105px; }
+.medium.outer { width: 123px; height: 134px; }
+.large.inner { width: 141px; height: 145px; }
+.large.outer { width: 163px; height: 175px; }
+
+.circle {
+  animation: fadein 2s 2s backwards;
+}
+
+.circle.hittable {
+  animation-name: floating;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+#ball1 {
+  animation-duration: 2s;
+  animation-delay: 1s;
+}
+#ball2 {
+  animation-duration: 4s;
+  animation-delay: 3s;
+}
+#ball3 { 
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+
+
+/**
+ * Keyframes
+ */
+
+@keyframes floating {
+  0% {
+    transform: translate(0%, 0%);	
+  }
+  25% {
+    transform: translate(40%, 100%);	
+  }	
+  50% {
+    transform: translate(260%, 60%);	
+  }	
+  75% {
+    transform: translate(-100%, -100%);	
+  }	
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+/* Outer frame animation */
+@keyframes pulse {
+  0%   { box-shadow: 1px 1px 100px 1px red; }
+  100% { box-shadow: 1px 1px 200px 1px red; }
+}
+
+/* Inner pulse */
+@keyframes pulsating {
+  0% {
+    background-color: rgb(35, 8, 11);
+  }
+  50% {
+    background-color: rgb(152,22,29);
+  }
+  100% {
+    background-color: rgb(35, 8, 11);
+  }
+}
+
+@keyframes toggleview {
+  from { visibility: hidden;  }
+  to   { visibility: visible; }
+}
+
+@keyframes bubble1ani {
+  100% { opacity: 0; }
+  50%  { opacity: 1; display: none; }
+}
+
+@keyframes bubble2ani {
+  100% { opacity: 1; }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#poly1 {
+  clip-path: polygon(0 720px, 455px 720px, 445px 690px, 390px 670px, 310px 560px, 325px 470px, 285px 485px, 270px 450px, 335px 420px, 352px 386px, 265px 390px, 260px 355px, 345px 345px, 335px 260px, 300px 300px, 265px 280px, 305px 225px, 255px 240px, 250px 205px, 320px 185px, 240px 100px, 280px 40px, 350px 70px, 390px 50px, 340px 0px, 0 0);
+}
+
+#poly2 {
+  clip-path: polygon(1280px 0, 1280px 720px, 960px 720px, 1045px 680px, 1070px 595px, 1040px 490px, 995px 420px, 935px 340px, 870px 330px, 850px 340px, 840px 310px, 895px 300px, 895px 260px, 820px 265px, 860px 240px, 850px 210px, 770px 240px, 720px 230px, 725px 195px, 780px 185px, 840px 185px, 850px 145px, 785px 140px, 840px 115px, 820px 80px, 710px 115px, 690px 70px, 635px 30px, 625px 0);
+}
+
+
+.speachbubbles {
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  height: 150px;
+  width: 200px;
+  z-index: 3;
+  top: 400px;
+  left: 60px;
+  text-align: center;
+}
+
+#bubble1 {
+  animation: bubble1ani 8s;
+  margin: 40px;
+  font-size: 30px;
+  opacity: 0;
+  z-index: 4;
+  color: black;
+  top: -32px;
+}
+
+#bubble2 {
+  animation: bubble2ani 5s forwards 6s;
+  opacity: 0;
+  margin: 40px 10px;
+  font-size: 20px;
+  z-index: 5;
+  color: black;
+  top: -25px;
+}
